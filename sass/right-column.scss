@@ -1,3 +1,88 @@
 .right-column {
   width: 1000px;
 }
+
+.right-column__top {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.right-column__top-icon {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  background-color: $white-color ;
+  margin-right: 20px;
+  position: relative;
+  padding: 6px 14px;
+}
+
+.right-column__top-title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 40px;
+  min-height: 40px;
+  font-weight: bold;
+  position: relative;
+  z-index: 10;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.right-column__top-title::after {
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+  border-top: 7px solid $black-color;
+  top: 20px;
+  right: 0;
+}
+
+.right-column__top-wrapper:hover .right-column__top-title::after {
+  content: "";
+  position: absolute;
+  border: 5px solid transparent;
+  border-bottom: 7px solid $black-color;
+  top: 15px;
+  right: 0;
+}
+
+.right-column__top-list {
+  display: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  background-color: $white-color;
+  list-style: none;
+  width: 300px;
+  font-weight: bold;
+  border: 1px solid $gray-color;
+  box-shadow: 0 0 30px rgba(#c6c6c6, 0.9);
+  cursor: pointer;
+  top: -10px;
+  left: 40px;
+}
+
+.right-column__top-title:hover + .right-column__top-list,
+.right-column__top-list:hover {
+  display: block;
+}
+
+.right-column__top-list-current {
+  border-bottom: 1px solid $gray-color;
+  cursor: auto;
+  min-height: 60px;
+}
+
+.right-column__top-list-item {
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.right-column__top-list-item:hover {
+  background-color: $gray-color;
+}

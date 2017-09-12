@@ -37,44 +37,6 @@
   padding-right: 15px;
 }
 
-.main-header__type-list {
-  display: none;
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
-  background-color: $white-color;
-  list-style: none;
-  width: 300px;
-  font-weight: bold;
-  border: 1px solid $gray-color;
-  box-shadow: 0 0 30px rgba(#c6c6c6, 0.9);
-  cursor: pointer;
-}
-
-.main-header__type:hover .main-header__type-list{
-    display: block;
-}
-
-.main-header__type-list-current {
-  font-size: 30px;
-  line-height: 1.2;
-  border-bottom: 1px solid $gray-color;
-  padding: 10px 20px;
-  cursor: auto;
-}
-
-.main-header__type-list-item {
-  font-size: 18px;
-  line-height: 30px;
-  margin: 0;
-  padding: 0 20px;
-}
-
-.main-header__type-list-item:hover {
-  background-color: $gray-color;
-}
-
 .main-header__user {
   position: relative;
   padding-left: 40px;
