@@ -1,0 +1,25 @@
+.theme {
+  font-family: "Myriad Pro", "Arial", sans-serif;
+  box-sizing: border-box;
+  color: $black-color;
+  line-height: 36px;
+  overflow-x: hidden;
+  position: relative;
+  background-color: $gray-color;
+}
+
+.theme__wrapper {
+  max-width: 1220px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.theme__img {
+  width: 100%;
+  height: auto;
+}
+
+.theme__title {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "trendsoft",
+  "version": "1.0.0",
+  "description": "Тестовое задание для студии Trand-Soft",
+  "main": "index.js",
+  "devDependencies": {
+    "autoprefixer": "6.7.x",
+    "browser-sync": "2.18.12",
+    "gulp": "3.9.1",
+    "gulp-plumber": "1.1.0",
+    "gulp-postcss": "6.4.0",
+    "gulp-sass": "3.1.0",
+    "@htmlacademy/editorconfig-cli": "1.x"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "editorconfig-cli": [
+    "*.html",
+    "*.json",
+    "*.js",
+    "js/**/*.js",
+    "img/**/*.svg",
+    "sass/**/*.{sass,scss}"
+  ],
+  "author": "Sergey Zveroboev",
+  "license": "ISC"
+}

@@ -1,0 +1,22 @@
+.btn {
+  display: block;
+  color: white;
+  background-color: $red-color;
+  text-decoration: none;
+  padding: 5px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 30px;
+  font-style: inherit;
+  letter-spacing: 0.1rem;
+}
+
+.btn:hover,
+.btn:focus{
+  background-color: #e63312;
+}
+
+.btn:active {
+  background-color: #b7280e;
+}
