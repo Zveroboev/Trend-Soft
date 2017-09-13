@@ -14,9 +14,9 @@
 
 .btn:hover,
 .btn:focus{
-  background-color: #e63312;
+  background-color: $red-color-hover;
 }
 
 .btn:active {
-  background-color: #b7280e;
+  background-color: $red-color-active;
 }

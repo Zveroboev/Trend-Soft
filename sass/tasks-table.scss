@@ -1,0 +1,132 @@
+.tasks-table {
+  background-color: $white-color;
+  padding: 0 30px;
+  margin-bottom: 40px;
+}
+
+.tasks-table__heading-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $gray-color;
+  margin: 0 -30px;
+  padding: 0 30px;
+  min-height: 76px;
+  font-size: 22px;
+  line-height: 36px;
+}
+
+.tasks-table__type-tasks {
+  margin: 0;
+  margin-right: 45px;
+}
+
+.tasks-table__sum-tasks {
+  margin-right: auto;
+  color: #999999;
+}
+
+.tasks-table__add-task {
+  padding-left: 25px;
+  color: $red-color;
+  cursor: pointer;
+  position: relative;
+}
+
+.tasks-table__add-task-decor {
+  height: 14px;
+  width: 14px;
+  background-color: $red-color;
+  border: 1px solid $gray-color;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.tasks-table__add-task-decor::after {
+  content: "";
+  height: 2px;
+  width: 8px;
+  background-color: $white-color;
+  position: absolute;
+  left: 3px;
+  top: 6px;
+}
+
+.tasks-table__add-task-decor::before {
+  content: "";
+  height: 8px;
+  width: 2px;
+  background-color: $white-color;
+  position: absolute;
+  left: 6px;
+  top: 3px;
+}
+
+.tasks-table__add-task:hover,
+.tasks-table__add-task:focus {
+  color: $red-color-hover;
+}
+
+.tasks-table__add-task:hover,
+.tasks-table__add-task:focus {
+  .tasks-table__add-task-decor {
+    background-color: $red-color-hover;
+  }
+}
+
+.tasks-table__add-task:active {
+  color: $red-color-active;
+}
+
+.tasks-table__add-task:active {
+  .tasks-table__add-task-decor {
+    background-color: $red-color-active;
+  }
+}
+
+.tasks-table__filter-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $gray-color;
+}
+
+.tasks-table__filter-date {
+  margin-right: 20px;
+  width: 155px;
+  height: 30px;
+}
+
+.tasks-table__filter-type {
+  margin-right: auto;
+  width: 200px;
+  height: 30px;
+}
+
+.tasks-table__filter-search {
+  width: 240px;
+  height: 30px;
+}
+
+.tasks-table__filter-search-wrapper {
+  position: relative;
+}
+
+.tasks-table__filter-search-wrapper::after {
+  content: url("../img/icon-search.svg");
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.tasks-table__filter-search {
+  padding-left: 10px;
+  padding-right: 25px;
+}
+
+.table-tasks__table {
+
+}

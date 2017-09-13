@@ -69,30 +69,76 @@
         <div class="tasks-table__heading-wrapper">
           <p class="tasks-table__type-tasks">Открытые задачи</p>
           <span class="tasks-table__sum-tasks">327</span>
-          <a class="tasks-table__add-task">Добавить задачу</a>
+          <a class="tasks-table__add-task">
+            <span class="tasks-table__add-task-decor"></span>
+            <span class="tasks-table__add-task-text">Добавить задачу</span>
+          </a>
         </div>
         <form class="tasks-table__filter-wrapper">
-          <label for="date" class="theme__visually-hidden"></label>
-          <select name="date" id="date" class="tasks-table__filter-date"></select>
-          <label for="type" class="theme__visually-hidden"></label>
-          <select name="type" id="type" class="tasks-table__filter-type"></select>
-          <label for="search" class="theme__visually-hidden"></label>
-          <input name="search" id="search" type="search">
+          <label for="date" class="theme__visually-hidden">Выберите дату</label>
+          <select name="date" id="date" class="tasks-table__filter-date">
+            <option value="Декабрь, 2015" class="tasks-table__filter-date-option">Декабрь, 2015</option>
+            <option value="Октябрь, 2015" class="tasks-table__filter-date-option" disabled>Октябрь, 2015</option>
+          </select>
+          <label for="type" class="theme__visually-hidden">Выберите тип</label>
+          <select name="type" id="type" class="tasks-table__filter-type">
+            <option value="Открытые" class="tasks-table__filter-type">Открытые задачи</option>
+            <option value="Выполненные" class="tasks-table__filter-type" disabled>Выполненные задачи</option>
+          </select>
+          <label class="tasks-table__filter-search-wrapper">
+            <span class="theme__visually-hidden">Поиск</span>
+            <input name="search" id="search" type="search" class="tasks-table__filter-search"
+                   placeholder="Поиск задач по проекту">
+          </label>
         </form>
-        <table class="table-tasks__table">
-          <tr class="table-tasks__table-row">
-            <th class="table-tasks__table-title">Т</th>
-            <th class="table-tasks__table-title">Тикет</th>
-            <th class="table-tasks__table-title">Название</th>
-            <th class="table-tasks__table-title">П</th>
-            <th class="table-tasks__table-title">Статус</th>
-            <th class="table-tasks__table-title">Решение</th>
-            <th class="table-tasks__table-title">Создано</th>
-            <th class="table-tasks__table-title">Обновлено</th>
-            <th class="table-tasks__table-title">Дедлайн</th>
+        <table class="table-tasks__table table">
+          <tr class="table__row table__row--title">
+            <th class="table__data table__data--1 table__title">Т</th>
+            <th class="table__data table__data--2 table__title">Тикет</th>
+            <th class="table__data table__data--3 table__title">Название</th>
+            <th class="table__data table__data--4 table__title">П</th>
+            <th class="table__data table__data--5 table__title">Статус</th>
+            <th class="table__data table__data--6 table__title">Решение</th>
+            <th class="table__data table__data--7 table__title">Создано</th>
+            <th class="table__data table__data--8 table__title">Обновлено</th>
+            <th class="table__data table__data--9 table__title">Дедлайн</th>
+            <th></th>
+          </tr>
+          <tr class="table__row">
+            <td class="table__data table__data--1"></td>
+            <td class="table__data table__data--2">0001</td>
+            <td class="table__data table__data--3">Вывести счетчик ком паний и договоров</td>
+            <td class="table__data table__data--4"></td>
+            <td class="table__data table__data--5">Открыто</td>
+            <td class="table__data table__data--6">Не решено</td>
+            <td class="table__data table__data--7">23.12.15</td>
+            <td class="table__data table__data--8">27.12.15</td>
+            <td class="table__data table__data--9">31.12.15</td>
+            <td class="table__data table__data--10"></td>
           </tr>
         </table>
       </div>
+      <section class="right-column__feedback feedback">
+        <div class="feedback__form-wrapper">
+          <p class="feedback__form-heading">Возникли вопросы?</p>
+          <p class="feedback__form-text">Воспользуйтесь формой отправки заявки и мы свяжемся с вами</p>
+          <a href="#" class="feedback__form-link btn">Оставить заявку</a>
+        </div>
+        <div class="feedback__adress-wrapper">
+          <p class="feedback__adress-heading">
+            или свяжитесь с нами напрямую:
+          </p>
+          <p class="feedback__adress">
+            г. Москва ул. Викторенко д. 11
+            <br>
+            +7 (499) 502-81-39
+          </p>
+          <a href="#" class="feedback__adress-link">order@trendsoft.ru</a>
+        </div>
+      </section>
+      <section class="main-footer">
+
+      </section>
     </section>
   </div>
 </main>

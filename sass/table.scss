@@ -1,0 +1,56 @@
+.table {
+  width: 100%;
+}
+
+.table__row {
+  border-bottom: 1px solid $gray-color;
+  min-height: 50px;
+  font-size: 14px;
+  line-height: 46px;
+  color: $black-color;
+}
+
+.table__row--title {
+  color: #999999;
+}
+
+.table__data {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table__data--1 {
+  width: 40px;
+}
+
+.table__data--2 {
+  width: 65px;
+}
+
+.table__data--3 {
+  width: 290px;
+}
+
+.table__data--4 {
+  width: 50px;
+}
+
+.table__data--5 {
+  width: 100px;
+}
+
+.table__data--6 {
+  width: 110px;
+}
+
+.table__data--7 {
+  width: 80px;
+}
+
+.table__data--8 {
+  width: 80px;
+}
+
+.table__data--9 {
+  width: 80px;
+}
