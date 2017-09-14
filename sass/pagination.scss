@@ -1,0 +1,84 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pagination__pages-list-wrapper {
+  margin-right: auto;
+}
+
+.pagination__pages-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__pages-item {
+  display: inline-block;
+  background-color: $gray-color;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 28px;
+  margin-right: 10px;
+}
+
+.pagination__pages-item:hover,
+.pagination__pages-item:focus {
+  background-color: $red-color-hover;
+}
+
+.pagination__pages-item:active {
+  background-color: $red-color-active;
+  color: $white-color;
+}
+
+.pagination__pages-item--current {
+  background-color: $red-color;
+  color: $white-color;
+  cursor: auto;
+}
+
+.pagination__pages-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pagination__text-for-sum {
+  font-size: 14px;
+  line-height: 36px;
+  color: #999999;
+  margin-right: 20px;
+}
+
+.pagination__sum-list {
+  color: #029cfe;
+  line-height: 28px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__sum-item {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.pagination__sum-item-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination__sum-item:last-child {
+  margin-right: 0;
+}
+
+.pagination__sum-item--current {
+  color: $black-color;
+}

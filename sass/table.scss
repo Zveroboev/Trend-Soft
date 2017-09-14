@@ -1,9 +1,9 @@
 .table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .table__row {
-  border-bottom: 1px solid $gray-color;
   min-height: 50px;
   font-size: 14px;
   line-height: 46px;
@@ -17,6 +17,7 @@
 .table__data {
   text-align: left;
   vertical-align: middle;
+  border-bottom: 1px solid $gray-color;
 }
 
 .table__data--1 {

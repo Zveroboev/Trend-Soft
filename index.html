@@ -68,7 +68,7 @@
       <div class="right-column__all-tasks tasks-table">
         <div class="tasks-table__heading-wrapper">
           <p class="tasks-table__type-tasks">Открытые задачи</p>
-          <span class="tasks-table__sum-tasks">327</span>
+          <span class="tasks-table__sum-tasks">0</span>
           <a class="tasks-table__add-task">
             <span class="tasks-table__add-task-decor"></span>
             <span class="tasks-table__add-task-text">Добавить задачу</span>
@@ -91,8 +91,8 @@
                    placeholder="Поиск задач по проекту">
           </label>
         </form>
-        <table class="table-tasks__table table">
-          <tr class="table__row table__row--title">
+        <table class="table-tasks__table table" id="table">
+          <tr class="table__row table__row--title" id="table-head">
             <th class="table__data table__data--1 table__title">Т</th>
             <th class="table__data table__data--2 table__title">Тикет</th>
             <th class="table__data table__data--3 table__title">Название</th>
@@ -104,19 +104,26 @@
             <th class="table__data table__data--9 table__title">Дедлайн</th>
             <th></th>
           </tr>
-          <tr class="table__row">
-            <td class="table__data table__data--1"></td>
-            <td class="table__data table__data--2">0001</td>
-            <td class="table__data table__data--3">Вывести счетчик ком паний и договоров</td>
-            <td class="table__data table__data--4"></td>
-            <td class="table__data table__data--5">Открыто</td>
-            <td class="table__data table__data--6">Не решено</td>
-            <td class="table__data table__data--7">23.12.15</td>
-            <td class="table__data table__data--8">27.12.15</td>
-            <td class="table__data table__data--9">31.12.15</td>
-            <td class="table__data table__data--10"></td>
-          </tr>
         </table>
+        <div class="table-tasks__pagination pagination">
+          <div class="pagination__pages-list-wrapper">
+          </div>
+          <p class="pagination__text-for-sum">Количество задач:</p>
+          <ul class="pagination__sum-list">
+            <li class="pagination__sum-item pagination__sum-item--current">
+              <a href="#" class="pagination__sum-item-link">20</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">50</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">100</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">Все</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <section class="right-column__feedback feedback">
         <div class="feedback__form-wrapper">
@@ -137,10 +144,36 @@
         </div>
       </section>
       <section class="main-footer">
-
+        <p class="main-footer__copyright">© ООО «Трендсофт», 2011-2015</p>
+        <a href="tel:84995028139" class="main-footer__phone">+7 (499) 502-81-39</a>
+        <ul class="main-footer__social">
+          <li class="main-footer__social-item">
+            <span class="theme__visually-hidden">Facebook</span>
+            <img src="img/fb.png" alt="Facebook" width="7" height="14">
+          </li>
+          <li class="main-footer__social-item">
+            <span class="theme__visually-hidden">Вконтакте</span>
+            <img src="img/vk.png" alt="Вконтакте" width="19" height="11">
+          </li>
+        </ul>
       </section>
     </section>
   </div>
 </main>
+<template id="table-template" >
+  <tr class="table__row">
+    <td class="table__data table__data--1"></td>
+    <td class="table__data table__data--2"></td>
+    <td class="table__data table__data--3"></td>
+    <td class="table__data table__data--4"></td>
+    <td class="table__data table__data--5"></td>
+    <td class="table__data table__data--6"></td>
+    <td class="table__data table__data--7"></td>
+    <td class="table__data table__data--8"></td>
+    <td class="table__data table__data--9"></td>
+    <td class="table__data table__data--10"></td>
+  </tr>
+</template>
+<script src="js/main.js"></script>
 </body>
 </html>

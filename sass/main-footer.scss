@@ -1,0 +1,32 @@
+.main-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+.main-footer__copyright {
+  margin-right: 130px;
+  color: #666666;
+}
+
+.main-footer__phone {
+  margin-right: auto;
+  text-decoration: none;
+  color: $black-color;
+  cursor: pointer;
+}
+
+.main-footer__social {
+  list-style: none;
+}
+
+.main-footer__social-item {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.main-footer__social-item:first-child {
+  margin-right: 20px;
+}
