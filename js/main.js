@@ -66,6 +66,62 @@
   // Запускаем загрузку данных при открытии страницы
   window.loadData(onLoad, console.log, URL.ALL);
 
+  function swapCurrentClass(evt, className) {
+    evt.currentTarget.querySelector('.' + className).classList.remove(className);
+    evt.target.classList.add(className);
+  }
+
+  // Получаем новые данные при изменении значения select
+  function onSelectChange(evt) {
+    // Удаляем класс прошлого активного элемента и возвращаем его элементу по умолчанию
+    var form = document.querySelector('.pagination__sum-list');
+    form.querySelector('.pagination__sum-item--current').classList.remove('pagination__sum-item--current');
+    form.querySelector('.pagination__sum-item').classList.add('pagination__sum-item--current');
+    // Скачиваем данные в зависимости от выбора сортировки
+    switch (evt.target.value) {
+      case 'All':
+        window.loadData(onLoad, console.log, URL.ALL);
+        break;
+      case 'December':
+        window.loadData(onLoad, console.log, URL.DEC);
+        break;
+      case 'October':
+        window.loadData(onLoad, console.log, URL.NOV);
+        break;
+    }
+  }
+
+  // Обработчик клика по элементу с количеством отображаемых задач
+  function onPageSelectionClick(evt) {
+    evt.preventDefault();
+
+    if (evt.target.classList.contains('pagination__sum-item-link')) {
+      swapCurrentClass(evt, 'pagination__sum-item--current');
+      // Берем значение елемента
+      var option = parseInt(evt.target.textContent, 10);
+      // Если не число, то выводим всю таблицу, иначе выбранное число
+      if (isNaN(option)) {
+        window.renderTable(FIRST_ELEMENT, tasks.length, window.renderPagination);
+      } else {
+        window.renderTable(FIRST_ELEMENT, option, window.renderPagination);
+      }
+    }
+  }
+
+  // Обработчик клика по пагинации
+  function onPaginationClick(evt) {
+    evt.preventDefault();
+
+    if (evt.target.classList.contains('pagination__pages-item-link')) {
+      swapCurrentClass(evt, 'pagination__pages-item--current');
+      // Находим текую страницу и количество задач в таблице
+      var elementOnPage = document.querySelectorAll('.table__row').length - 1;
+      var currentPage = document.querySelector('.pagination__pages-item--current').textContent;
+      // Генерируем таблицу в зависимости от нажатой пагинации
+      window.renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage)
+    }
+  }
+
   // Следим за изменениеми
   SELECT.addEventListener('change', onSelectChange);
   TASKS_IN_TABLE.addEventListener('click', onPageSelectionClick);

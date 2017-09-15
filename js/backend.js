@@ -39,5 +39,5 @@
     xhr.open(method, URL);
     addXHREvents(xhr, onLoad, onError);
     xhr.send();
-  }
+  };
 })();
