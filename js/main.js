@@ -16,19 +16,25 @@
   var TASKS_IN_TABLE = document.querySelector('.pagination__sum-list');
   var PAGINATION = document.querySelector('.pagination__pages-list-wrapper');
   var SELECT = document.querySelector('.tasks-table__filter-date');
+  var SEARCH = document.querySelector('#search');
 
   var tasks = [];
 
   // Обработчик данных после загрузки
   function onLoad(data) {
-    SUM_TASKS.textContent = data.length; // Указываем общее число загруженных данных
-    tasks = data;
-    renderTable(FIRST_ELEMENT, ITEMS_ON_PAGE, window.renderPagination);
+    // Указываем общее число загруженных данных
+    SUM_TASKS.textContent = data.length;
+    // Из-за невозможности обращаться к серверу и т.к. переменная используется через замыкание
+    // для того, что бы не затереть переменную при фильтрации через поиск выношу ее в глобал
+    window.tasks = data;
+    renderTable(FIRST_ELEMENT, ITEMS_ON_PAGE, true);
   }
 
   // Отрисовываем таблицу на странице
-  function renderTable (firstElement, lastElement, callback) {
+  function renderTable(firstElement, lastElement, boolean, data) {
     var fragment = document.createDocumentFragment();
+    // Если не передали массив с данными, то берем из замыкания
+    tasks = data || window.tasks;
     // Если число отрисованных элементов больше длины массива, то выбираем длину массива
     lastElement = lastElement < tasks.length ? lastElement : tasks.length;
     // Очищаем таблицу и вставляем шапку
@@ -40,8 +46,8 @@
     }
     TABLE.appendChild(fragment);
     //Строим пагинацию если надо
-    if (callback) {
-      callback(tasks.length, lastElement);
+    if (boolean) {
+      window.renderPagination(tasks.length, lastElement);
     }
   }
 
@@ -70,6 +76,21 @@
   function swapCurrentClass(evt, className) {
     evt.currentTarget.querySelector('.' + className).classList.remove(className);
     evt.target.classList.add(className);
+  }
+
+  // Проверяем на наличие введенного в поиск текста в каждом объекте массива с данными (строке таблицы)
+  function hasValueInObject(item, value) {
+    var boolean = false;
+
+    for (var key in item) {
+      var objValue = item[key].toString().toLowerCase();
+
+      if (objValue.indexOf(value) !== -1) {
+        boolean = true;
+        break;
+      }
+    }
+    return boolean;
   }
 
   // Получаем новые данные при изменении значения select
@@ -102,9 +123,9 @@
       var option = parseInt(evt.target.textContent, 10);
       // Если не число, то выводим всю таблицу, иначе выбранное число
       if (isNaN(option)) {
-        renderTable(FIRST_ELEMENT, tasks.length, window.renderPagination);
+        renderTable(FIRST_ELEMENT, tasks.length, true);
       } else {
-        renderTable(FIRST_ELEMENT, option, window.renderPagination);
+        renderTable(FIRST_ELEMENT, option, true);
       }
     }
   }
@@ -119,12 +140,30 @@
       var elementOnPage = document.querySelector('.pagination__sum-item--current').textContent;
       var currentPage = document.querySelector('.pagination__pages-item--current').textContent;
       // Генерируем таблицу в зависимости от нажатой пагинации
-      renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage)
+      renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage, false)
     }
+  }
+
+  //Обработчик ввода текста в поле поиска
+  function onSearchInputText(evt) {
+    // Берем значение введеное в поле без учета регистра
+    var value = evt.target.value.toLowerCase();
+    // Возвращаем в новый массив значения в которых совпадает с введенным текстом
+    var sortedArray = window.tasks.filter(function (item) {
+      // Проверем каждый ключ в массиве объектов
+      return hasValueInObject(item, value);
+    });
+
+    renderTable(FIRST_ELEMENT, ITEMS_ON_PAGE, true, sortedArray);
   }
 
   // Следим за изменениеми
   SELECT.addEventListener('change', onSelectChange);
   TASKS_IN_TABLE.addEventListener('click', onPageSelectionClick);
   PAGINATION.addEventListener('click', onPaginationClick);
+  SEARCH.addEventListener('keyup', function (evt) {
+    window.setDelay(function () {
+      onSearchInputText(evt);
+    });
+  });
 })();

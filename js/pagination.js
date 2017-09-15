@@ -4,7 +4,7 @@
   var pagination = document.querySelector('.pagination__pages-list-wrapper');
 
   //Генерируем структуру пагинации
-  window.renderPagination = function(allTasks, tasksOnPage) {
+  window.renderPagination = function (allTasks, tasksOnPage) {
     // Находим количество страниц пагинации
     var pages = Math.ceil(allTasks / tasksOnPage);
     // Если страница одна, то пагинацию не строим
@@ -33,7 +33,10 @@
     pagination.innerHTML = '';
     pagination.appendChild(paginationList);
     // Задаем первому элементу пагинации активный класс
-    var firstElement = pagination.querySelectorAll('.pagination__pages-item')[0];
-    firstElement.classList.add('pagination__pages-item--current');
+    if (pages > 1) {
+      var firstElement = pagination.querySelectorAll('.pagination__pages-item')[0];
+
+      firstElement.classList.add('pagination__pages-item--current');
+    }
   }
 })();
