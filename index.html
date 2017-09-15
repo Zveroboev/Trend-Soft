@@ -77,8 +77,9 @@
         <form class="tasks-table__filter-wrapper">
           <label for="date" class="theme__visually-hidden">Выберите дату</label>
           <select name="date" id="date" class="tasks-table__filter-date">
-            <option value="Декабрь, 2015" class="tasks-table__filter-date-option">Декабрь, 2015</option>
-            <option value="Октябрь, 2015" class="tasks-table__filter-date-option" disabled>Октябрь, 2015</option>
+            <option value="All" class="tasks-table__filter-date-option">Все</option>
+            <option value="December" class="tasks-table__filter-date-option">Декабрь, 2015</option>
+            <option value="October" class="tasks-table__filter-date-option">Октябрь, 2015</option>
           </select>
           <label for="type" class="theme__visually-hidden">Выберите тип</label>
           <select name="type" id="type" class="tasks-table__filter-type">
@@ -174,6 +175,9 @@
     <td class="table__data table__data--10"></td>
   </tr>
 </template>
+<script src="js/backend.js"></script>
+<script src="js/pagination.js"></script>
+<script src="js/debounce.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,79 +1,53 @@
 'use strict';
 
 (function () {
-  var URL_LOAD = 'js/data.json';
-  var TABLE = document.querySelector('#table');
-  var TABLE_HEAD = TABLE.querySelector('tr');
-  var PAGINATION = document.querySelector('.pagination__pages-list-wrapper');
-  var ALL_TASKS = document.querySelector('.tasks-table__sum-tasks');
+  var URL_ALL = 'js/JSON/data.json';
+  var URL_DEC = 'js/JSON/december-tasks.json';
+  var URL_NOV = 'js/JSON/november-tasks.json';
+
+  var SUM_TASKS = document.querySelector('.tasks-table__sum-tasks');
   var ITEMS_ON_PAGE = 20; // Количество ячеек на странице по умолчанию
 
-  // Обработчики ответов сервера
-  function addXHREvents(xhr, onLoad, onError) {
-    xhr.addEventListener('load', function () {
-      switch (xhr.status) {
-        case 200:
-          onLoad(xhr.response);
-          break;
-        case 400:
-          onError('Неверный запрос');
-          break;
-        case 401:
-          onError('Пользователь не авторизован');
-          break;
-        case 404:
-          onError('Ничего не найдено');
-          break;
-        default:
-          onError('Неизвестный статус: ' + xhr.status + ' ' + xhr.statusText);
-      }
-    });
-    xhr.addEventListener('error', function () {
-      onError('Произошла ошибка соединения');
-    });
-    xhr.addEventListener('timeout', function () {
-      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
-    });
+  var TABLE = document.querySelector('#table');
+  var TABLE_HEAD = TABLE.querySelector('tr');
+  var TASKS_IN_TABLE = document.querySelector('.pagination__sum-list');
+  var PAGINATION = document.querySelector('.pagination__pages-list-wrapper');
+  var SELECT = document.querySelector('.tasks-table__filter-date');
+
+  var tasks = [];
+
+  function swapCurrentClass(evt, className) {
+    evt.currentTarget.querySelector('.' + className).classList.remove(className);
+    evt.target.classList.add(className);
   }
 
-  // Получим данные в формате json для занесения в таблицу
-  function loadTableData(onLoad, onError) {
-    var xhr = new XMLHttpRequest();
-    var method = 'GET';
-
-    xhr.responseType = 'json';
-    xhr.timeout = 10000;
-    xhr.open(method, URL_LOAD);
-    addXHREvents(xhr, onLoad, onError);
-    xhr.send();
+  // Обработчик данных после загрузки
+  function onLoad(data) {
+    SUM_TASKS.textContent = data.length; // Указываем общее число загруженных данных
+    tasks = data;
+    window.renderTable(0, ITEMS_ON_PAGE, window.renderPagination);
   }
 
-  //Генерируем структуру пагинации
-  function renderPagination(all, number) {
-    number = number || ITEMS_ON_PAGE;
-    all = all || window.allTasks.length;
-    // Находим количество страниц пагинации
-    var pages = Math.ceil(all / number);
+  // Отрисовываем таблицу на странице
+  window.renderTable = function (firstElement, lastElement, callback) {
+    var fragment = document.createDocumentFragment();
+    var i;
 
-    var paginationList = document.createElement('ul');
-    var paginationItem = document.createElement('li');
-    var paginationLink = document.createElement('a');
-
-    paginationList.classList.add('pagination__pages-list');
-    paginationItem.classList.add('pagination__pages-item');
-    paginationLink.classList.add('pagination__pages-item-link');
-
-    for (var i = 0; i < pages; i++) {
-      var linkElement = paginationLink.cloneNode();
-      var itemElement = paginationItem.cloneNode();
-
-      linkElement.textContent = i + 1;
-      itemElement.appendChild(linkElement);
-      paginationList.appendChild(itemElement);
+    // Если число отрисованных элементов больше длины массива, то выбираем длину массива
+    lastElement = lastElement < tasks.length ? lastElement : tasks.length;
+    // Очищаем таблицу и вставляем шапку
+    TABLE.innerHTML = '';
+    TABLE.appendChild(TABLE_HEAD);
+    // Добавляем в фрагмент строки таблицы. Пушим фрагмент в таблицу
+    for (i = firstElement; i < lastElement; i++) {
+      fragment.appendChild(renderTableStructure(tasks[i]));
     }
-    PAGINATION.innerHTML = '';
-    PAGINATION.appendChild(paginationList);
-  }
+    TABLE.appendChild(fragment);
+    //Строим пагинацию если надо
+    if (callback) {
+      callback(tasks.length, lastElement);
+    }
+  };
 
   // Генерируем структуру строки таблицы
   function renderTableStructure(element) {
@@ -93,57 +67,63 @@
     return row;
   }
 
-  // Отрисовываем таблицу в браузере
-  function renderTable(data, quantity) {
-    var fragment = document.createDocumentFragment();
+  // Запускаем загрузку данных при открытии страницы
+  window.loadData(onLoad, console.log, URL_ALL);
 
-    quantity = quantity || data.length;
-    TABLE.innerHTML = '';
-    TABLE.appendChild(TABLE_HEAD);
-
-    for (var i = 0; i < quantity; i++) {
-      fragment.appendChild(renderTableStructure(data[i]));
+  // Получаем новые данные при изменении значения select
+  function onSelectChange(evt) {
+    // Удаляем класс прошлого активного элемента и возвращаем его элементу по умолчанию
+    var form = document.querySelector('.pagination__sum-list');
+    form.querySelector('.pagination__sum-item--current').classList.remove('pagination__sum-item--current');
+    form.querySelector('.pagination__sum-item').classList.add('pagination__sum-item--current');
+    // Скачиваем данные в зависимости от выбора сортировки
+    switch (evt.target.value) {
+      case 'All':
+        window.loadData(onLoad, console.log, URL_ALL);
+        break;
+      case 'December':
+        window.loadData(onLoad, console.log, URL_DEC);
+        break;
+      case 'October':
+        window.loadData(onLoad, console.log, URL_NOV);
+        break;
     }
-    TABLE.appendChild(fragment);
-    ALL_TASKS.textContent = data.length;
-
-    renderPagination(data.length, quantity);
   }
-
-  // Обработчик загрузки данных
-  function onLoad(data) {
-    window.allTasks = data;
-    ALL_TASKS.textContent = data.length;
-    renderTable(data, ITEMS_ON_PAGE);
-  }
-
-  loadTableData(onLoad);
-
-  // Получаем обертку элементов с выбором отображаемого кол-ва задач
-  var pagesInTable = document.querySelector('.pagination__sum-list');
 
   // Обработчик клика по элементу с количеством отображаемых задач
   function onPageSelectionClick(evt) {
     evt.preventDefault();
 
     if (evt.target.classList.contains('pagination__sum-item-link')) {
-      var option = evt.target.textContent;
-
-      // Удаляем класс активного элемента и вешаем его на новый
-      evt.currentTarget.querySelector('.pagination__sum-item--current').classList.remove('pagination__sum-item--current');
-      evt.target.classList.add('pagination__sum-item--current');
-
-      // Проверяем на число
+      swapCurrentClass(evt, 'pagination__sum-item--current');
+      // Берем значение елемента
+      var option = parseInt(evt.target.textContent, 10);
+      // Если не число, то выводим всю таблицу, иначе выбранное число
       if (isNaN(option)) {
-        renderTable(window.allTasks);
+        window.renderTable(0, tasks.length, window.renderPagination);
       } else {
-        renderTable(window.allTasks, option);
+        window.renderTable(0, option, window.renderPagination);
       }
     }
   }
 
-  // Вешаем обработчик события с помощью делегирования
-  pagesInTable.addEventListener('click', onPageSelectionClick);
+  // Обработчик клика по пагинации
+  function onPaginationClick(evt) {
+    evt.preventDefault();
 
+    if (evt.target.classList.contains('pagination__pages-item-link')) {
+      swapCurrentClass(evt, 'pagination__pages-item--current');
+      // Находим текую страницу и количество задач в таблице
+      var elementOnPage = document.querySelectorAll('.table__row').length - 1;
+      console.log(document.querySelector('.pagination__pages-item--current'));
+      var currentPage = document.querySelector('.pagination__pages-item--current').textContent;
 
+      window.renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage)
+    }
+  }
+
+  // Следим за изменениеми
+  SELECT.addEventListener('change', onSelectChange);
+  TASKS_IN_TABLE.addEventListener('click', onPageSelectionClick);
+  PAGINATION.addEventListener('click', onPaginationClick);
 })();

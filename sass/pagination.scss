@@ -38,7 +38,7 @@
 .pagination__pages-item--current {
   background-color: $red-color;
   color: $white-color;
-  cursor: auto;
+  cursor: default;
 }
 
 .pagination__pages-item-link {
