@@ -4,9 +4,14 @@
   var pagination = document.querySelector('.pagination__pages-list-wrapper');
 
   //Генерируем структуру пагинации
-  window.renderPagination = function(allTasks, tasksOnPage, callback) {
+  window.renderPagination = function(allTasks, tasksOnPage) {
     // Находим количество страниц пагинации
     var pages = Math.ceil(allTasks / tasksOnPage);
+    // Если страница одна, то пагинацию не строим
+    if (pages <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
     // Создаем элементы пагинации
     var paginationList = document.createElement('ul');
     var paginationItem = document.createElement('li');

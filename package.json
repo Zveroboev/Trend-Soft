@@ -4,13 +4,18 @@
   "description": "Тестовое задание для студии Trand-Soft",
   "main": "index.js",
   "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "1.x",
     "autoprefixer": "6.7.x",
     "browser-sync": "2.18.12",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
     "gulp": "3.9.1",
     "gulp-plumber": "1.1.0",
     "gulp-postcss": "6.4.0",
-    "gulp-sass": "3.1.0",
-    "@htmlacademy/editorconfig-cli": "1.x"
+    "gulp-sass": "3.1.0"
   },
   "scripts": {
     "test": "npm test"
