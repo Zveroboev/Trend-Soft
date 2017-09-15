@@ -23,11 +23,11 @@
   function onLoad(data) {
     SUM_TASKS.textContent = data.length; // Указываем общее число загруженных данных
     tasks = data;
-    window.renderTable(FIRST_ELEMENT, ITEMS_ON_PAGE, window.renderPagination);
+    renderTable(FIRST_ELEMENT, ITEMS_ON_PAGE, window.renderPagination);
   }
 
   // Отрисовываем таблицу на странице
-  window.renderTable = function (firstElement, lastElement, callback) {
+  function renderTable (firstElement, lastElement, callback) {
     var fragment = document.createDocumentFragment();
     // Если число отрисованных элементов больше длины массива, то выбираем длину массива
     lastElement = lastElement < tasks.length ? lastElement : tasks.length;
@@ -43,7 +43,7 @@
     if (callback) {
       callback(tasks.length, lastElement);
     }
-  };
+  }
 
   // Генерируем структуру строки таблицы
   function renderTableStructure(element) {
@@ -66,6 +66,7 @@
   // Запускаем загрузку данных при открытии страницы
   window.loadData(onLoad, console.log, URL.ALL);
 
+  // Меняем классы выбранных элементов
   function swapCurrentClass(evt, className) {
     evt.currentTarget.querySelector('.' + className).classList.remove(className);
     evt.target.classList.add(className);
@@ -101,9 +102,9 @@
       var option = parseInt(evt.target.textContent, 10);
       // Если не число, то выводим всю таблицу, иначе выбранное число
       if (isNaN(option)) {
-        window.renderTable(FIRST_ELEMENT, tasks.length, window.renderPagination);
+        renderTable(FIRST_ELEMENT, tasks.length, window.renderPagination);
       } else {
-        window.renderTable(FIRST_ELEMENT, option, window.renderPagination);
+        renderTable(FIRST_ELEMENT, option, window.renderPagination);
       }
     }
   }
@@ -115,10 +116,10 @@
     if (evt.target.classList.contains('pagination__pages-item-link')) {
       swapCurrentClass(evt, 'pagination__pages-item--current');
       // Находим текую страницу и количество задач в таблице
-      var elementOnPage = document.querySelectorAll('.table__row').length - 1;
+      var elementOnPage = document.querySelector('.pagination__sum-item--current').textContent;
       var currentPage = document.querySelector('.pagination__pages-item--current').textContent;
       // Генерируем таблицу в зависимости от нажатой пагинации
-      window.renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage)
+      renderTable(elementOnPage * (currentPage - 1), currentPage * elementOnPage)
     }
   }
 
