@@ -95,6 +95,7 @@
 
   // Получаем новые данные при изменении значения select
   function onSelectChange(evt) {
+    SEARCH.value = '';
     // Удаляем класс прошлого активного элемента и возвращаем его элементу по умолчанию
     var form = document.querySelector('.pagination__sum-list');
     form.querySelector('.pagination__sum-item--current').classList.remove('pagination__sum-item--current');

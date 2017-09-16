@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trend Soft</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body class="theme">
+<header class="main-header">
+  <div class="main-header__wrapper theme__wrapper">
+    <a class="main-header__logo-wrapper">
+      <img src="img/logo_ru.png" alt="Trend Soft" class="theme__img" width="133" height="24">
+    </a>
+    <div class="main-header__type">
+      <p class="main-heaer__type-current">Barselona Design</p>
+    </div>
+    <div class="main-header__user">
+      <div class="main-header__user-avatar-wrapper">
+        <img src="img/avatar_standart.png" alt="Avatar" class="main-header__user-avatar theme__img" width="20"
+             height="20">
+      </div>
+      <p class="main-header__user-current">Petr_Osmanov</p>
+    </div>
+  </div>
+</header>
+<main class="main-content">
+  <div class="main-content__wrapper theme__wrapper">
+    <section class="left-column">
+      <div class="left-column__top">
+        <a href="#" class="btn">Добавить задачу</a>
+      </div>
+      <div class="left-column__info">
+        <p class="left-column__info-title">Свободная информация</p>
+        <div class="left-column__all-tasks">
+          <b class="left-column__task-title">Все задачи</b>
+          <ul class="left-column__task-list">
+            <li class="left-column__task-item">Открытые</li>
+            <li class="left-column__task-item">Выполненые</li>
+          </ul>
+        </div>
+        <div class="left-column__report">
+          Отчеты
+        </div>
+      </div>
+    </section>
+    <section class="right-column">
+      <div class="right-column__top">
+        <div class="right-column__top-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11" height="26"
+               viewBox="0 0 11 26">
+            <image id="_1452808148_high3" data-name="1452808148_high3" width="11" height="26"
+                   xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAaCAQAAADLL26TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfhCQwXOxv5tCxvAAABMElEQVQoz12SMUsDQRCFvzurRA02qQQlhQasBHEhqKiF2FklYHcQtTKQRvAPmF7EIMFUFoeNVhZBS6tZU2iEgI2NXCcWEVERWQvvLreZbXYfu294345jsEuPUOTKZbB8ptUrxlpyKN8yYbDFLTHiGwwJE73MKdAAcKKWOsstedpqHohu6xQX5IH6/zkyOWYJeOEyIesqZQDOVC+WdYEaAD38qL2rMzQZBuBZdSN5aKfBWrgfC1aCdPA4/guOtFi3wj/R5MSRFJtUmE0G4yaMo0t4rJIO5brTB6vbzAFwz2L8VM8wBcAbnvroO5bIALCvOjEqPcoDOeBIVZNMNsgB1+zZqHaBDkX1k0S1QIEvttV7zASAClBWd4lABpmUTzmwvxqD1OTcDEyAq7N08QaH5Q8y13LoHQKUhgAAAABJRU5ErkJggg=="></image>
+          </svg>
+        </div>
+        <div class="right-column__top-wrapper">
+          <p class="right-column__top-title">Barselona Design</p>
+          <ul class="right-column__top-list">
+            <li class="right-column__top-list-current"></li>
+            <li class="right-column__top-list-item">Kinomania.ru</li>
+            <li class="right-column__top-list-item">Клуб Kinzza</li>
+            <li class="right-column__top-list-item">2x2</li>
+            <li class="right-column__top-list-item">DriverLive</li>
+            <li class="right-column__top-list-item">Enijoy</li>
+            <li class="right-column__top-list-item">FilmToolz</li>
+          </ul>
+        </div>
+      </div>
+      <div class="right-column__all-tasks tasks-table">
+        <div class="tasks-table__heading-wrapper">
+          <p class="tasks-table__type-tasks">Открытые задачи</p>
+          <span class="tasks-table__sum-tasks">0</span>
+          <a class="tasks-table__add-task">
+            <span class="tasks-table__add-task-decor"></span>
+            <span class="tasks-table__add-task-text">Добавить задачу</span>
+          </a>
+        </div>
+        <form class="tasks-table__filter-wrapper">
+          <label for="date" class="theme__visually-hidden">Выберите дату</label>
+          <select name="date" id="date" class="tasks-table__filter-date">
+            <option value="All" class="tasks-table__filter-date-option">Все</option>
+            <option value="December" class="tasks-table__filter-date-option">Декабрь, 2015</option>
+            <option value="October" class="tasks-table__filter-date-option">Октябрь, 2015</option>
+          </select>
+          <label for="type" class="theme__visually-hidden">Выберите тип</label>
+          <select name="type" id="type" class="tasks-table__filter-type">
+            <option value="Открытые" class="tasks-table__filter-type">Открытые задачи</option>
+            <option value="Выполненные" class="tasks-table__filter-type" disabled>Выполненные задачи</option>
+          </select>
+          <label class="tasks-table__filter-search-wrapper">
+            <span class="theme__visually-hidden">Поиск</span>
+            <input name="search" id="search" type="search" class="tasks-table__filter-search"
+                   placeholder="Поиск задач по проекту">
+          </label>
+        </form>
+        <table class="table-tasks__table table" id="table">
+          <tr class="table__row table__row--title" id="table-head">
+            <th class="table__data table__data--1 table__title">Т</th>
+            <th class="table__data table__data--2 table__title">Тикет</th>
+            <th class="table__data table__data--3 table__title">Название</th>
+            <th class="table__data table__data--4 table__title">П</th>
+            <th class="table__data table__data--5 table__title">Статус</th>
+            <th class="table__data table__data--6 table__title">Решение</th>
+            <th class="table__data table__data--7 table__title">Создано</th>
+            <th class="table__data table__data--8 table__title">Обновлено</th>
+            <th class="table__data table__data--9 table__title">Дедлайн</th>
+            <th></th>
+          </tr>
+        </table>
+        <div class="table-tasks__pagination pagination">
+          <div class="pagination__pages-list-wrapper">
+          </div>
+          <p class="pagination__text-for-sum">Количество задач:</p>
+          <ul class="pagination__sum-list">
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link pagination__sum-item--current">20</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">50</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">100</a>
+            </li>
+            <li class="pagination__sum-item">
+              <a href="#" class="pagination__sum-item-link">Все</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section class="right-column__feedback feedback">
+        <div class="feedback__form-wrapper">
+          <p class="feedback__form-heading">Возникли вопросы?</p>
+          <p class="feedback__form-text">Воспользуйтесь формой отправки заявки и мы свяжемся с вами</p>
+          <a href="#" class="feedback__form-link btn">Оставить заявку</a>
+        </div>
+        <div class="feedback__adress-wrapper">
+          <p class="feedback__adress-heading">
+            или свяжитесь с нами напрямую:
+          </p>
+          <p class="feedback__adress">
+            г. Москва ул. Викторенко д. 11
+            <br>
+            +7 (499) 502-81-39
+          </p>
+          <a href="#" class="feedback__adress-link">order@trendsoft.ru</a>
+        </div>
+      </section>
+      <section class="main-footer">
+        <p class="main-footer__copyright">© ООО «Трендсофт», 2011-2015</p>
+        <a href="tel:84995028139" class="main-footer__phone">+7 (499) 502-81-39</a>
+        <ul class="main-footer__social">
+          <li class="main-footer__social-item">
+            <span class="theme__visually-hidden">Facebook</span>
+            <img src="img/fb.png" alt="Facebook" width="7" height="14">
+          </li>
+          <li class="main-footer__social-item">
+            <span class="theme__visually-hidden">Вконтакте</span>
+            <img src="img/vk.png" alt="Вконтакте" width="19" height="11">
+          </li>
+        </ul>
+      </section>
+    </section>
+  </div>
+</main>
+<template id="table-template" >
+  <tr class="table__row">
+    <td class="table__data table__data--1"></td>
+    <td class="table__data table__data--2"></td>
+    <td class="table__data table__data--3"></td>
+    <td class="table__data table__data--4"></td>
+    <td class="table__data table__data--5"></td>
+    <td class="table__data table__data--6"></td>
+    <td class="table__data table__data--7"></td>
+    <td class="table__data table__data--8"></td>
+    <td class="table__data table__data--9"></td>
+    <td class="table__data table__data--10"></td>
+  </tr>
+</template>
+<script src="js/main.min.js"></script>
+</body>
+</html>
